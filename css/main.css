@@ -1,10 +1,17 @@
 /*! HTML5 Boilerplate v5.0 | MIT License | http://h5bp.com/ */
 
+.browserupgrade {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
 html {
-    /*background-color: #BCC7FD;*/
+    font-family: source-sans-pro, sans-serif;
     color: white;
     font-size: 1em;
-    text-shadow: 1px 1px 2px black;
+    text-shadow: 1px 1px 7px black;
 }
 
 ::-moz-selection {
@@ -17,52 +24,17 @@ html {
     text-shadow: none;
 }
 
-audio,
-canvas,
-iframe,
-img,
-svg,
-video {
-    vertical-align: middle;
-}
-
-fieldset {
-    border: 0;
-    margin: 0;
-    padding: 0;
-}
-
-textarea {
-    resize: vertical;
-}
-
-.browserupgrade {
-    margin: 0.2em 0;
-    background: #ccc;
-    color: #000;
-    padding: 0.2em 0;
-}
-
-
-/* ==========================================================================
-   Author's custom styles
-   ========================================================================== */
-
-
-html {
-    font-family: source-sans-pro, sans-serif;
-}
-
 body {
     height: 100vh;
     width: 100vw;
     background: repeating-linear-gradient(
         135deg,
-        #A20909,
-        #A20909 160px,
-        #348223 160px,
-        #348223 320px
+        #449233,
+        #348223 180px,
+        #B21919 180px,
+        #A20909 360px
     );
+    background-image: url("../img/background.png");
 }
 
 .app-container {
@@ -73,8 +45,8 @@ body {
 .title-page__main {
     position: absolute;
     top: 0;
-    left: 0;
-    right: 0;
+    left: 30px;
+    right: 30px;
     bottom: 0;
     height: 250px;
     margin: auto;
@@ -91,6 +63,20 @@ h1 {
     margin: 0;
     letter-spacing: -1px;
 }
+
+.sentence-text {
+    font-size: 3em;
+    font-weight: 300;
+    margin: 0;
+    line-height: 1.37em;
+    word-spacing: 0.05em;
+}
+
+.sentence-text__chosen {
+    font-weight: 700;
+    word-spacing: 0;
+}
+
 
 .title-page__begin {
     font-size: 2em;
@@ -137,11 +123,11 @@ h1 {
     font-weight: 900;
 }
 
-ul {
+.option-list {
     margin-top: 30px;
 }
 
-.option {
+.option-list__option {
     display: block;
     font-size: 1.7em;
     font-weight: 500;
@@ -149,7 +135,7 @@ ul {
     cursor: pointer;
 }
 
-.option:hover {
+.option-list__option:hover {
     font-weight: 700;
 }
 
@@ -285,5 +271,10 @@ ul {
     h2,
     h3 {
         page-break-after: avoid;
+    }
+
+
+    .title-page__main {
+        position: default;
     }
 }

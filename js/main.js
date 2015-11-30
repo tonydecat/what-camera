@@ -18,7 +18,7 @@ var App = React.createClass({
             }
         },
         'pro-who': {
-            label: 'who takes',
+            label: ' who takes',
             edges: {
                 'mostly photos': 'pro-of',
                 'mostly videos': 'pro-of',
@@ -26,7 +26,7 @@ var App = React.createClass({
             }
         },
         'normal-who': {
-            label: 'who takes',
+            label: ' who takes',
             edges: {
                 'mostly photos': 'normal-of',
                 'mostly videos': 'normal-of',
@@ -34,7 +34,7 @@ var App = React.createClass({
             }
         },
         'giftgiver-who': {
-            label: 'buying for someone who takes',
+            label: ', buying for someone who takes',
             edges: {
                 'mostly photos': 'normal-of',
                 'mostly videos': 'normal-of',
@@ -43,7 +43,7 @@ var App = React.createClass({
             }
         },
         'pro-of': {
-            label: 'of',
+            label: ' of',
             edges: {
                 'weddings and people': 'pro-budget',
                 'sports or wildlife': 'pro-budget',
@@ -53,7 +53,7 @@ var App = React.createClass({
             }
         },
         'normal-of': {
-            label: 'of',
+            label: ' of',
             edges: {
                 'family and friends': 'values',
                 'action and sports': 'values',
@@ -62,7 +62,7 @@ var App = React.createClass({
             }
         },
         'values': {
-            label: 'and values',
+            label: ', and values',
             edges: {
                 'specs and features': 'normal-budget',
                 'simplicity': 'normal-budget',
@@ -70,7 +70,7 @@ var App = React.createClass({
             }
         },
         'pro-budget': {
-            label: 'and my budget is',
+            label: ', and my budget is',
             edges: {
                 'less than $1000': null,
                 '$1000 to $2000': null,
@@ -79,13 +79,14 @@ var App = React.createClass({
             }
         },
         'normal-budget': {
-            label: 'and my budget is',
+            label: ', and my budget is',
             edges: {
                 '$0': null,
                 'less than $200': null,
                 '$200 to $600': null,
                 '$600 to $1200': null,
-                '$1200 or more': null,
+                '$1200 or $2000': null,
+                '$2000 or more': null,
             }
         },
     },
@@ -126,7 +127,7 @@ var App = React.createClass({
         var remainingChoices = choices.slice(1);
         var nextNode = this.NODES[startNode.edges[choice]];
 
-        return startNode.label + ' ' + choice + ' ' + this.buildSentence_(nextNode, remainingChoices);
+        return [startNode.label, ' ', React.DOM.span({className: 'sentence-text__chosen'}, choice)].concat(this.buildSentence_(nextNode, remainingChoices));
     },
 
     // TODO: Combine this with above method.
@@ -145,23 +146,28 @@ var App = React.createClass({
         var sentence = this.buildSentence_(this.NODES.start, this.state.choices);
         var lastNode = this.getLastNode_(this.NODES.start, this.state.choices);
         
-        var options = Object.keys(lastNode.edges);
+        if (lastNode){
+            var options = Object.keys(lastNode.edges);
 
-        var optionEls = options.map(function(option){
-            return React.DOM.li({
-                className: 'option',
-                onClick: function(){
-                    this.setState({
-                        choices: this.state.choices.concat([option])
-                    });
-                }.bind(this)
-            }, option);
-        }.bind(this));
+            var optionEls = options.map(function(option){
+                return React.DOM.li({
+                    className: 'option-list__option',
+                    onClick: function(){
+                        this.setState({
+                            choices: this.state.choices.concat([option])
+                        });
+                    }.bind(this)
+                }, option);
+            }.bind(this));
+        } else {
+            var result = ['I should buy a ', React.DOM.span({className:'sentence-text__chosen'}, 'Fuji X100T'), '.'];
+        }
 
         return React.DOM.div({className:'title-page'},
             React.DOM.div({className:'title-page__main title-page__main--tall'},
-                React.DOM.h1(null, sentence),
-                React.DOM.ul(null, optionEls)));
+                React.DOM.span({className:'sentence-text'}, sentence),
+                React.DOM.ul({className:'option-list'}, optionEls),
+                React.DOM.span({className:'sentence-text'}, result)));
     },
 
     handleStartClick_: function(){
@@ -170,6 +176,6 @@ var App = React.createClass({
 });
 
 ReactDOM.render(
-    React.createElement(App, {name: 'World'}),
+    React.createElement(App),
     document.querySelector('.app-container')
 );
