@@ -15,6 +15,7 @@ var App = React.createClass({
                 'a beginner': 'normal-who',
                 'a hipster': 'normal-who',
                 'a gift giver': 'giftgiver-who',
+                'impatient': null,
             }
         },
         'pro-who': {
@@ -85,7 +86,7 @@ var App = React.createClass({
                 'less than $200': null,
                 '$200 to $600': null,
                 '$600 to $1200': null,
-                '$1200 or $2000': null,
+                '$1200 to $2000': null,
                 '$2000 or more': null,
             }
         },
@@ -160,14 +161,23 @@ var App = React.createClass({
                 }, option);
             }.bind(this));
         } else {
-            var result = ['I should buy a ', React.DOM.span({className:'sentence-text__chosen'}, 'Fuji X100T'), '.'];
+            var result = ['I should buy a ', React.DOM.span({className:'sentence-text__result-camera'}, 'Fuji X100T'), '.'];
         }
 
-        return React.DOM.div({className:'title-page'},
+        if (!result){
+            return React.DOM.div({className:'title-page'},
             React.DOM.div({className:'title-page__main title-page__main--tall'},
-                React.DOM.span({className:'sentence-text'}, sentence),
+                React.DOM.div({className:'sentence-text'}, sentence),
                 React.DOM.ul({className:'option-list'}, optionEls),
-                React.DOM.span({className:'sentence-text'}, result)));
+                React.DOM.div({className:'result-box'}, '')));
+        } else {
+            return React.DOM.div({className:'title-page'},
+            React.DOM.div({className:'title-page__main title-page__main--full'},
+                React.DOM.div({className:'sentence-text'}, sentence),
+                React.DOM.div({className:'sentence-text sentence-text--result'}, result),
+                React.DOM.div({className:'result-box result-box--open'}, '')));
+        }
+        
     },
 
     handleStartClick_: function(){

@@ -9,9 +9,7 @@
 
 html {
     font-family: source-sans-pro, sans-serif;
-    color: white;
     font-size: 1em;
-    text-shadow: 1px 1px 7px black;
 }
 
 ::-moz-selection {
@@ -45,16 +43,21 @@ body {
 .title-page__main {
     position: absolute;
     top: 0;
-    left: 30px;
-    right: 30px;
+    left: 0;
+    right: 0;
     bottom: 0;
     height: 250px;
     margin: auto;
     text-align: center;
+    transition: height 0.4s;
 }
 
 .title-page__main--tall {
     height: 350px;
+}
+
+.title-page__main--full {
+    height: 100vh;
 }
 
 h1 {
@@ -62,21 +65,58 @@ h1 {
     font-weight: 900;
     margin: 0;
     letter-spacing: -1px;
+
+    color: white;
+    text-shadow: 1px 1px 7px black;
 }
 
 .sentence-text {
-    font-size: 3em;
+    margin: 60px 30px 0;
+    font-size: 2.5em;
     font-weight: 300;
-    margin: 0;
-    line-height: 1.37em;
+    line-height: 1.35em;
     word-spacing: 0.05em;
+
+    color: white;
+    text-shadow: 1px 1px 7px black;
 }
 
-.sentence-text__chosen {
+.sentence-text--result {
+    font-size: 4em;
+    margin-top: 70px;
+}
+
+.sentence-text__chosen, .sentence-text__result-camera {
     font-weight: 700;
     word-spacing: 0;
+    position: relative;
 }
 
+.sentence-text__result-camera::after {
+    content: '';
+    position: absolute;
+    bottom: -26px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 22px 25px 22px;
+    border-color: transparent transparent #ffffff transparent;
+}
+
+.result-box {
+    background-color: white;
+    margin-top: 21px;
+    box-shadow: 0 0 7px black;
+    height: 0;
+    transition: height 0.4s;
+}
+
+.result-box--open {
+    height: 300px;
+}
 
 .title-page__begin {
     font-size: 2em;
@@ -89,6 +129,9 @@ h1 {
     -moz-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
+
+    color: white;
+    text-shadow: 1px 1px 7px black;
 }
 
 .title-page__begin::after {
@@ -121,6 +164,9 @@ h1 {
     right: 20px;
     font-size: 1.5em;
     font-weight: 900;
+
+    color: white;
+    text-shadow: 1px 1px 7px black;
 }
 
 .option-list {
@@ -133,6 +179,9 @@ h1 {
     font-weight: 500;
     margin-top: 15px;
     cursor: pointer;
+
+    color: white;
+    text-shadow: 1px 1px 7px black;
 }
 
 .option-list__option:hover {
