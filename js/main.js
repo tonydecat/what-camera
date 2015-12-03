@@ -122,11 +122,19 @@ var App = React.createClass({
             helpfuls: ['travel', 'simplicity', 'looking cool'],
         },
         PHONE: {
-            name: 'nothing. I\'ll stick with my phone',
+            customArticle: 'nothing. ',
+            name: 'I\'ll stick with my phone',
             mustORs: [
                 ['less than $200', '$0'],
             ],
             helpfuls: ['travel', 'simplicity', 'a dabbler', 'a beginner', 'a hipster', 'an enthusiast', '$0'],
+            imageBig: 'img/iphone.jpg',
+            specs: [
+                React.DOM.h3(null, 'Your Smartphone'),
+                React.DOM.ul(null, [
+                    React.DOM.li(null, 'Most modern smartphones have great cameras built in. They\'re also smaller, sleeker and more user-friendly than entry-level point-and-shoots. Best of all, you probably already have one in your pocket. We suggest saving your money or putting it towards a new phone, unless or until you decide you want to get serious about photography.'),
+                ])
+            ]
         },
         INSTAX_90: {
             name: 'Fuji Instax Mini 90',
@@ -136,6 +144,16 @@ var App = React.createClass({
                 ['a dabbler', 'a beginner', 'a hipster', 'a gift giver']
             ],
             helpfuls: ['a gift giver', 'a hipster', 'family and friends', 'travel', 'simplicity', 'looking cool'],
+            imageBig: 'img/instax90.png',
+            specs: [
+                React.DOM.h3(null, 'Fuji Instax Mini 90'),
+                React.DOM.ul(null, [
+                    React.DOM.li(null, 'Retro styled instant camera'),
+                    React.DOM.li(null, 'Electronic Viewfinder'),
+                    React.DOM.li(null, 'WiFi'),
+                    React.DOM.li(null, 'Fast autofocus')
+                ])
+            ]
         },
         GOPRO_HERO_PLUS: {
             name: 'GoPro HERO+',
@@ -145,6 +163,16 @@ var App = React.createClass({
                 ['action and sports']
             ],
             helpfuls: ['mostly videos', 'action and sports'],
+            imageBig: 'img/heroplus.jpg',
+            specs: [
+                React.DOM.h3(null, 'GoPro HERO+'),
+                React.DOM.ul(null, [
+                    React.DOM.li(null, 'Great entry-level action camera'),
+                    React.DOM.li(null, 'Electronic Viewfinder'),
+                    React.DOM.li(null, 'WiFi'),
+                    React.DOM.li(null, 'Fast autofocus')
+                ])
+            ]
         },
         GOPRO_HERO4_BLACK: {
             name: 'GoPro HERO4 Black',
@@ -156,6 +184,7 @@ var App = React.createClass({
             helpfuls: ['mostly videos', 'action and sports'],
         },
         EM10II: {
+            customArticle: 'an ',
             name: 'Olympus OM-D E-M10 II',
             mustORs: [
                 ['$200 to $600', '$600 to $1200'],
@@ -179,7 +208,7 @@ var App = React.createClass({
                 ['$1200 to $2000', '$2000 or more', '$1000 to $2000'],
             ],
             helpfuls: ['a professional photographer', 'an enthusiast', 'specs and features', 'mostly photos', 'a mix of photos and videos'],
-            imageBig: 'img/d750.png',
+            imageBig: 'img/d750.jpg',
             specs: [
                 React.DOM.h3(null, 'Nikon D750'),
                 React.DOM.ul(null, [
@@ -279,7 +308,7 @@ var App = React.createClass({
                 React.DOM.ul({className:'option-list'}, optionEls),
                 React.DOM.div({className:'result-box'}, '')));
         } else {
-            var resultSentence = ['I should buy a ', React.DOM.span({className:'sentence-text__result-camera'}, result.name), '.'];
+            var resultSentence = ['I should buy ', result.customArticle || 'a ', React.DOM.span({className:'sentence-text__result-camera'}, result.name), '.'];
 
             return React.DOM.div({className:'title-page'},
                 React.DOM.div({className:'title-page__main title-page__main--full'},
@@ -299,8 +328,10 @@ var App = React.createClass({
 
     renderResultBox_: function(result){
         return [
-            React.DOM.img({className: 'result-box__image', src:result.imageBig},''),
-            React.DOM.div({className: 'result-box__specs'}, result.specs)
+            React.DOM.div({className: 'result-box__section'},
+                React.DOM.img({className: 'result-box__image', src:result.imageBig},'')),
+            React.DOM.div({className: 'result-box__section'},
+                React.DOM.div({className: 'result-box__specs'}, result.specs)),
         ];
     },
 
