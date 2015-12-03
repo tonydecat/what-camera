@@ -75,8 +75,8 @@ var App = React.createClass({
             edges: {
                 'less than $1000': null,
                 '$1000 to $2000': null,
-                '$2000 to $5000': null,
-                '$5000 or more': null,
+                '$2000 to $4000': null,
+                '$4000 or more': null,
             }
         },
         'normal-budget': {
@@ -89,6 +89,84 @@ var App = React.createClass({
                 '$1200 to $2000': null,
                 '$2000 or more': null,
             }
+        },
+    },
+
+    RESULTS: {
+        X100T: {
+            name: 'Fuji X100T',
+            mustORs: [
+                ['$600 to $1200', '$1200 to $2000'],
+                ['an enthusiast', 'a dabbler', 'a hipster'],
+                ['mostly photos'],
+            ],
+            helpfuls: ['travel', 'simplicity', 'looking cool'],
+        },
+        RX1R: {
+            name: 'Sony RX1R II',
+            mustORs: [
+                ['$2000 or more'],
+                ['an enthusiast', 'a dabbler', 'a hipster'],
+                ['mostly photos'],
+            ],
+            helpfuls: ['travel', 'simplicity', 'looking cool'],
+        },
+        PHONE: {
+            name: 'nothing. I\'ll stick with my phone',
+            mustORs: [
+                ['less than $200', '$0'],
+            ],
+            helpfuls: ['travel', 'simplicity', 'a dabbler', 'a beginner', 'a hipster', 'an enthusiast', '$0'],
+        },
+        INSTAX_90: {
+            name: 'Fuji Instax Mini 90',
+            mustORs: [
+                ['less than $200'],
+                ['mostly photos'],
+                ['a dabbler', 'a beginner', 'a hipster', 'a gift giver']
+            ],
+            helpfuls: ['a gift giver', 'a hipster', 'family and friends', 'travel', 'simplicity', 'looking cool'],
+        },
+        GOPRO_HERO_PLUS: {
+            name: 'GoPro HERO+',
+            mustORs: [
+                ['less than $200'],
+                ['mostly videos', 'a mix of photos and videos'],
+                ['action and sports']
+            ],
+            helpfuls: ['mostly videos', 'action and sports'],
+        },
+        GOPRO_HERO4_BLACK: {
+            name: 'GoPro HERO4 Black',
+            mustORs: [
+                ['$200 to $600'],
+                ['mostly videos', 'a mix of photos and videos'],
+                ['action and sports']
+            ],
+            helpfuls: ['mostly videos', 'action and sports'],
+        },
+        EM10: {
+            name: 'Olympus OM-D E-M10',
+            mustORs: [
+                ['$200 to $600', '$600 to $1200'],
+                ['mostly photos', 'a mix of photos and videos'],
+            ],
+            helpfuls: ['travel', 'specs and features', 'an enthusiast', 'a dabbler', 'a hipster', 'a gift giver'],
+        },
+        D750: {
+            name: 'Nikon D750',
+            mustORs: [
+                ['$1200 to $2000', '$2000 or more', '$1000 to $2000'],
+            ],
+            helpfuls: ['a professional photographer', 'an enthusiast', 'specs and features', 'mostly photos', 'a mix of photos and videos'],
+        },
+        D810: {
+            name: 'Nikon D810',
+            mustORs: [
+                ['$2000 or more', '$2000 to $4000'],
+                ['a professional photographer', 'an enthusiast'],
+            ],
+            helpfuls: ['specs and features', 'mostly photos', 'a mix of photos and videos'],
         },
     },
 
@@ -161,7 +239,7 @@ var App = React.createClass({
                 }, option);
             }.bind(this));
         } else {
-            var result = ['I should buy a ', React.DOM.span({className:'sentence-text__result-camera'}, 'Fuji X100T'), '.'];
+            var result = this.determineWinner_();
         }
 
         if (!result){
@@ -171,17 +249,76 @@ var App = React.createClass({
                 React.DOM.ul({className:'option-list'}, optionEls),
                 React.DOM.div({className:'result-box'}, '')));
         } else {
+            var resultSentence = ['I should buy a ', React.DOM.span({className:'sentence-text__result-camera'}, result.name), '.'];
+
             return React.DOM.div({className:'title-page'},
-            React.DOM.div({className:'title-page__main title-page__main--full'},
+                React.DOM.div({className:'title-page__main title-page__main--full'},
                 React.DOM.div({className:'sentence-text'}, sentence),
-                React.DOM.div({className:'sentence-text sentence-text--result'}, result),
-                React.DOM.div({className:'result-box result-box--open'}, '')));
+                React.DOM.div({className:'sentence-text sentence-text--result'}, resultSentence),
+                React.DOM.div({className:'result-box result-box--open'}, this.renderResultBox_()),
+                React.DOM.div({
+                    className:'restart-button',
+                    onClick: function(){
+                        this.setState(this.getInitialState());
+                    }.bind(this)
+                }, 'RESTART')));
         }
         
     },
 
+    renderResultBox_: function(){
+        return [
+            React.DOM.img({className: 'result-box__image', src:'img/x100t.jpg'},''),
+            React.DOM.div({className: 'result-box__specs'},[
+                React.DOM.h3(null, 'FUJI X100T'),
+                React.DOM.ul(null, [
+                    React.DOM.li(null, '16 MP X-Trans Sensor'),
+                    React.DOM.li(null, 'Fixed 23mm F2.0 lens'),
+                    React.DOM.li(null, 'Hybrid optical/electronic viewfinder'),
+                    React.DOM.li(null, 'Retro styling and manual controls')
+                ])
+            ])
+        ];
+    },
+
     handleStartClick_: function(){
         this.setState({currentState: this.STATES.STARTED})
+    },
+
+    howManyIncluded_: function(items){
+        var choices = this.state.choices;
+        var result = 0;
+        // O(n*m). This could be made more efficienct, not that it matters for this data.
+        items.forEach(function(item){
+            if (choices.indexOf(item) >= 0){
+                result += 1;
+            }
+        });
+        return result;
+    },
+
+    determineWinner_: function(){
+        var result = null;
+        var highestScore = -1;
+
+        Object.keys(this.RESULTS).forEach(function(potentialResultKey){
+            var potentialResult = this.RESULTS[potentialResultKey];
+            var possible = true;
+
+            potentialResult.mustORs.forEach(function(mustOR){
+                if (this.howManyIncluded_(mustOR) === 0){
+                    possible = false;
+                }
+            }.bind(this));
+
+            var score = this.howManyIncluded_(potentialResult.helpfuls);
+            if (possible && score > highestScore){
+                result = potentialResult;
+                highestScore = score;
+            }
+        }.bind(this));
+
+        return result;
     }
 });
 

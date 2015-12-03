@@ -71,7 +71,7 @@ h1 {
 }
 
 .sentence-text {
-    margin: 60px 30px 0;
+    margin: 20px 20px 0;
     font-size: 2.5em;
     font-weight: 300;
     line-height: 1.35em;
@@ -86,36 +86,104 @@ h1 {
     margin-top: 70px;
 }
 
-.sentence-text__chosen, .sentence-text__result-camera {
+.sentence-text__chosen {
+    font-weight: 700;
+    word-spacing: 0;
+}
+
+.sentence-text__result-camera {
     font-weight: 700;
     word-spacing: 0;
     position: relative;
+    white-space: nowrap;
 }
 
 .sentence-text__result-camera::after {
     content: '';
     position: absolute;
-    bottom: -26px;
+    bottom: -28px;
     left: 0;
     right: 0;
     margin: auto;
     width: 0;
     height: 0;
     border-style: solid;
-    border-width: 0 22px 25px 22px;
-    border-color: transparent transparent #ffffff transparent;
+    border-width: 0 22px 26px 22px;
+    border-color: transparent transparent white transparent;
 }
 
 .result-box {
     background-color: white;
     margin-top: 21px;
     box-shadow: 0 0 7px black;
+    overflow: hidden;
+
     height: 0;
     transition: height 0.4s;
 }
 
 .result-box--open {
     height: 300px;
+    padding: 20px;
+}
+
+.result-box__image {
+    max-height: 280px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.result-box__specs {
+    width: 400px;
+    display: inline-block;
+    vertical-align: top;
+    text-align: left;
+    font-size: 1.2em;
+    line-height: 1.4em;
+    padding: 20px;
+}
+
+h3 {
+    font-size: 1.5em;
+    font-weight: 900;
+    margin-bottom: 20px;
+}
+
+.restart-button {
+    margin: 40px auto 0;
+    font-size: 1.8em;
+    letter-spacing: -1px;
+    font-weight: 900;
+    cursor: pointer;
+    display: inline-block;
+    padding: 20px 40px;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    position: relative;
+
+    color: white;
+    text-shadow: 1px 1px 7px black;
+}
+
+.restart-button::before {
+    /*position: absolute;*/
+    /*left: 3px;*/
+    content: '';
+    size: 1.2em;
+    vertical-align: middle;
+    margin-right: 10px;
+    display: inline-block;
+
+    height: 48px;
+    width: 48px;
+    background-size: 48px;
+    background-image: url("../img/restart-icon@2x.png");
+}
+
+.restart-button:hover::before {
+  transform: rotate(-360deg);
+  transition: transform .6s ease-in-out;
 }
 
 .title-page__begin {
