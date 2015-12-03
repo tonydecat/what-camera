@@ -101,6 +101,16 @@ var App = React.createClass({
                 ['mostly photos'],
             ],
             helpfuls: ['travel', 'simplicity', 'looking cool'],
+            imageBig: 'img/x100t.jpg',
+            specs: [
+                React.DOM.h3(null, 'FUJI X100T'),
+                React.DOM.ul(null, [
+                    React.DOM.li(null, '16 MP X-Trans Sensor'),
+                    React.DOM.li(null, 'Fixed 23mm F2.0 lens'),
+                    React.DOM.li(null, 'Hybrid optical/electronic viewfinder'),
+                    React.DOM.li(null, 'Retro styling and manual controls')
+                ])
+            ]
         },
         RX1R: {
             name: 'Sony RX1R II',
@@ -145,13 +155,23 @@ var App = React.createClass({
             ],
             helpfuls: ['mostly videos', 'action and sports'],
         },
-        EM10: {
-            name: 'Olympus OM-D E-M10',
+        EM10II: {
+            name: 'Olympus OM-D E-M10 II',
             mustORs: [
                 ['$200 to $600', '$600 to $1200'],
                 ['mostly photos', 'a mix of photos and videos'],
             ],
             helpfuls: ['travel', 'specs and features', 'an enthusiast', 'a dabbler', 'a hipster', 'a gift giver'],
+            imageBig: 'img/em10ii.jpg',
+            specs: [
+                React.DOM.h3(null, 'Olympus OM-D E-M10 II'),
+                React.DOM.ul(null, [
+                    React.DOM.li(null, '5-Axis Image Stabilization'),
+                    React.DOM.li(null, 'Electronic Viewfinder'),
+                    React.DOM.li(null, 'WiFi'),
+                    React.DOM.li(null, 'Fast autofocus')
+                ])
+            ]
         },
         D750: {
             name: 'Nikon D750',
@@ -159,6 +179,14 @@ var App = React.createClass({
                 ['$1200 to $2000', '$2000 or more', '$1000 to $2000'],
             ],
             helpfuls: ['a professional photographer', 'an enthusiast', 'specs and features', 'mostly photos', 'a mix of photos and videos'],
+            imageBig: 'img/d750.png',
+            specs: [
+                React.DOM.h3(null, 'Nikon D750'),
+                React.DOM.ul(null, [
+                    React.DOM.li(null, '24MP Full-Frame Sensor'),
+                    React.DOM.li(null, 'WiFi'),
+                ])
+            ]
         },
         D810: {
             name: 'Nikon D810',
@@ -257,7 +285,7 @@ var App = React.createClass({
                 React.DOM.div({className:'title-page__main title-page__main--full'},
                 React.DOM.div({className:'sentence-text'}, sentence),
                 React.DOM.div({className:'sentence-text sentence-text--result'}, resultSentence),
-                React.DOM.div({className:'result-box result-box--open'}, this.renderResultBox_()),
+                React.DOM.div({className:'result-box result-box--open'}, this.renderResultBox_(result)),
                 React.DOM.div({
                     className:'restart-button',
                     onClick: function(){
@@ -269,18 +297,10 @@ var App = React.createClass({
         
     },
 
-    renderResultBox_: function(){
+    renderResultBox_: function(result){
         return [
-            React.DOM.img({className: 'result-box__image', src:'img/x100t.jpg'},''),
-            React.DOM.div({className: 'result-box__specs'},[
-                React.DOM.h3(null, 'FUJI X100T'),
-                React.DOM.ul(null, [
-                    React.DOM.li(null, '16 MP X-Trans Sensor'),
-                    React.DOM.li(null, 'Fixed 23mm F2.0 lens'),
-                    React.DOM.li(null, 'Hybrid optical/electronic viewfinder'),
-                    React.DOM.li(null, 'Retro styling and manual controls')
-                ])
-            ])
+            React.DOM.img({className: 'result-box__image', src:result.imageBig},''),
+            React.DOM.div({className: 'result-box__specs'}, result.specs)
         ];
     },
 
@@ -321,6 +341,11 @@ var App = React.createClass({
                 highestScore = score;
             }
         }.bind(this));
+
+        if (!result){
+            randomIndex = Math.floor(Math.random() * Object.keys(this.RESULTS).length);
+            result = this.RESULTS[Object.keys(this.RESULTS)[randomIndex]];
+        }
 
         return result;
     }
