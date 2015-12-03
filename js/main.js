@@ -190,7 +190,7 @@ var App = React.createClass({
     renderTitlePage_: function(){
         return React.DOM.div({className:'title-page'},
             React.DOM.div({className:'title-page__main'},
-                React.DOM.h1(null, 'What camera should I buy?*'),
+                React.DOM.h1(null, 'What camera should I get?*'),
                 React.DOM.div({
                     className:'title-page__begin',
                     onClick:this.handleStartClick_
