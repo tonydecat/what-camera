@@ -232,6 +232,7 @@ var App = React.createClass({
                 return React.DOM.li({
                     className: 'option-list__option',
                     onClick: function(){
+                        ga('send', 'event', 'questions', 'answer', option);
                         this.setState({
                             choices: this.state.choices.concat([option])
                         });
@@ -240,6 +241,7 @@ var App = React.createClass({
             }.bind(this));
         } else {
             var result = this.determineWinner_();
+            ga('send', 'event', 'questions', 'finished', (result && result.name) || 'none');
         }
 
         if (!result){
@@ -259,6 +261,7 @@ var App = React.createClass({
                 React.DOM.div({
                     className:'restart-button',
                     onClick: function(){
+                        ga('send', 'event', 'questions', 'restart');
                         this.setState(this.getInitialState());
                     }.bind(this)
                 }, 'RESTART')));
@@ -282,6 +285,7 @@ var App = React.createClass({
     },
 
     handleStartClick_: function(){
+        ga('send', 'event', 'questions', 'start');
         this.setState({currentState: this.STATES.STARTED})
     },
 
