@@ -124,7 +124,22 @@ h1 {
 
 .result-box--open {
     height: 300px;
-    padding: 20px;
+    padding: 20px 0;
+}
+
+@media only screen and (max-width: 1001px) {
+    .result-box--open {
+        height: 600px;
+    }
+}
+
+.result-box--listitemview {
+    height: auto;
+    width: 1040px;
+    margin: 20px auto;
+    max-width: 97%;
+    border-radius: 4px;
+    padding: 20px 0;
 }
 
 .result-box__section {
@@ -172,7 +187,13 @@ h1 {
 h3 {
     font-size: 1.5em;
     font-weight: 900;
-    margin-bottom: 20px;
+}
+
+h4 {
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    margin-bottom: 10px;
 }
 
 .restart-button {

@@ -103,12 +103,13 @@ var App = React.createClass({
             helpfuls: ['travel', 'simplicity', 'looking cool'],
             imageBig: 'img/x100t.jpg',
             specs: [
-                React.DOM.h3(null, 'FUJI X100T'),
+                React.DOM.h3(null, 'Fuji X100T'),
+                React.DOM.h4(null, 'Perfect for: The minimalist or the traveller'),
+                React.DOM.p(null, 'The X100T packs an SLR-sized 16MP sensor, a 23mm F2.0 lens, full manual controls, and a hybrid optical/electronic viewfinder into a compact and rugged body, making it perfect for someone who cares more about taking great photos than fumbling with lenses.'),
                 React.DOM.ul(null, [
-                    React.DOM.li(null, '16 MP X-Trans Sensor'),
-                    React.DOM.li(null, 'Fixed 23mm F2.0 lens'),
-                    React.DOM.li(null, 'Hybrid optical/electronic viewfinder'),
-                    React.DOM.li(null, 'Retro styling and manual controls')
+                    React.DOM.li(null, '+ Simple, well-speced and great image quality'),
+                    React.DOM.li(null, '- Poor video mode'),
+                    React.DOM.li(null, '- Limited to a single focal length'),
                 ])
             ]
         },
@@ -120,6 +121,13 @@ var App = React.createClass({
                 ['mostly photos'],
             ],
             helpfuls: ['travel', 'simplicity', 'looking cool'],
+            imageBig: 'img/rx1rii.jpg',
+            specs: [
+                React.DOM.h3(null, 'Sony RX1R II'),
+                React.DOM.ul(null, [
+                    React.DOM.li(null, 'Most modern smartphones have great cameras built in. They\'re also smaller, sleeker and more user-friendly than entry-level point-and-shoots. Best of all, you probably already have one in your pocket. We suggest saving your money or putting it towards a new phone, unless or until you decide you want to get serious about photography.'),
+                ])
+            ]
         },
         PHONE: {
             customArticle: 'nothing. ',
@@ -147,11 +155,12 @@ var App = React.createClass({
             imageBig: 'img/instax90.png',
             specs: [
                 React.DOM.h3(null, 'Fuji Instax Mini 90'),
+                React.DOM.h4(null, 'Perfect for: The fun-lover or the person who has everything'),
+                React.DOM.p(null, 'Instant cameras are far from dead, and the Instax Mini 90 proves it.'),
                 React.DOM.ul(null, [
-                    React.DOM.li(null, 'Retro styled instant camera'),
-                    React.DOM.li(null, 'Electronic Viewfinder'),
-                    React.DOM.li(null, 'WiFi'),
-                    React.DOM.li(null, 'Fast autofocus')
+                    React.DOM.li(null, '+ Fun factor; Enables a different, more spontaneous kind of photography'),
+                    React.DOM.li(null, '- Film can get pricey'),
+                    React.DOM.li(null, '- Resolution is poor compared to even the cheapest digital camera'),
                 ])
             ]
         },
@@ -166,11 +175,12 @@ var App = React.createClass({
             imageBig: 'img/heroplus.jpg',
             specs: [
                 React.DOM.h3(null, 'GoPro HERO+'),
+                React.DOM.h4(null, 'Perfect for: the thrill-seeker on a budget'),
+                React.DOM.p(null, '.'),
                 React.DOM.ul(null, [
-                    React.DOM.li(null, 'Great entry-level action camera'),
-                    React.DOM.li(null, 'Electronic Viewfinder'),
-                    React.DOM.li(null, 'WiFi'),
-                    React.DOM.li(null, 'Fast autofocus')
+                    React.DOM.li(null, '+ Wallet-friendly'),
+                    React.DOM.li(null, '- No LCD screen'),
+                    React.DOM.li(null, '- Fewer video modes than higher-end GoPros, making it wo'),
                 ])
             ]
         },
@@ -182,6 +192,17 @@ var App = React.createClass({
                 ['action and sports']
             ],
             helpfuls: ['mostly videos', 'action and sports'],
+            imageBig: 'img/hero4black.jpg',
+            specs: [
+                React.DOM.h3(null, 'GoPro HERO4 Black'),
+                React.DOM.h4(null, 'Perfect for: the thrill-seeker'),
+                React.DOM.p(null, '.'),
+                React.DOM.ul(null, [
+                    React.DOM.li(null, '+ 4K video'),
+                    React.DOM.li(null, '+ slow mo'),
+                    React.DOM.li(null, '- No LCD screen'),
+                ])
+            ]
         },
         EM10II: {
             customArticle: 'an ',
@@ -194,11 +215,14 @@ var App = React.createClass({
             imageBig: 'img/em10ii.jpg',
             specs: [
                 React.DOM.h3(null, 'Olympus OM-D E-M10 II'),
+                React.DOM.h4(null, 'Perfect for: the budding photographer or the size-and-price-concious enthusiast'),
+                React.DOM.p(null, '.'),
                 React.DOM.ul(null, [
-                    React.DOM.li(null, '5-Axis Image Stabilization'),
-                    React.DOM.li(null, 'Electronic Viewfinder'),
-                    React.DOM.li(null, 'WiFi'),
-                    React.DOM.li(null, 'Fast autofocus')
+                    React.DOM.li(null, '+ 5-Axis Image Stabilization'),
+                    React.DOM.li(null, '+ Interchangeable lenses'),
+                    React.DOM.li(null, '+ Electronic Viewfinder'),
+                    React.DOM.li(null, '+ WiFi'),
+                    React.DOM.li(null, '+ Fast autofocus')
                 ])
             ]
         },
@@ -211,6 +235,8 @@ var App = React.createClass({
             imageBig: 'img/d750.jpg',
             specs: [
                 React.DOM.h3(null, 'Nikon D750'),
+                React.DOM.h4(null, 'Perfect for: the enthusiast or the pro'),
+                React.DOM.p(null, 'The first full-frame camera you should consider.'),
                 React.DOM.ul(null, [
                     React.DOM.li(null, '24MP Full-Frame Sensor'),
                     React.DOM.li(null, 'WiFi'),
@@ -224,6 +250,15 @@ var App = React.createClass({
                 ['a professional photographer', 'an enthusiast'],
             ],
             helpfuls: ['specs and features', 'mostly photos', 'a mix of photos and videos'],
+            imageBig: 'img/d810.jpg',
+            specs: [
+                React.DOM.h3(null, 'Nikon D810'),
+                React.DOM.h4(null, 'Perfect for: the pro with money to spend'),
+                React.DOM.p(null, 'Reliable, versatile. Keeps shooting, day in and out.'),
+                React.DOM.ul(null, [
+                    React.DOM.li(null, '??MP Full-Frame Sensor'),
+                ])
+            ]
         },
     },
 
@@ -289,7 +324,7 @@ var App = React.createClass({
                 return React.DOM.li({
                     className: 'option-list__option',
                     onClick: function(){
-                        ga('send', 'event', 'questions', 'answer', option);
+                        ga('send', 'event', 'question', 'answer', option);
                         this.setState({
                             choices: this.state.choices.concat([option])
                         });
@@ -298,30 +333,31 @@ var App = React.createClass({
             }.bind(this));
         } else {
             var result = this.determineWinner_();
-            ga('send', 'event', 'questions', 'finished', (result && result.name) || 'none');
+            ga('send', 'event', 'finish', 'finish', (result && result.name) || 'none');
         }
 
         if (!result){
             return React.DOM.div({className:'title-page'},
-            React.DOM.div({className:'title-page__main title-page__main--tall'},
-                React.DOM.div({className:'sentence-text'}, sentence),
-                React.DOM.ul({className:'option-list'}, optionEls),
-                React.DOM.div({className:'result-box'}, '')));
+                React.DOM.div({className:'title-page__main title-page__main--tall'},
+                    React.DOM.div({className:'sentence-text'}, sentence),
+                    React.DOM.ul({className:'option-list'}, optionEls),
+                    React.DOM.div({className:'result-box'}, '')));
         } else {
             var resultSentence = ['I should buy ', result.customArticle || 'a ', React.DOM.span({className:'sentence-text__result-camera'}, result.name), '.'];
 
             return React.DOM.div({className:'title-page'},
                 React.DOM.div({className:'title-page__main title-page__main--full'},
-                React.DOM.div({className:'sentence-text'}, sentence),
-                React.DOM.div({className:'sentence-text sentence-text--result'}, resultSentence),
-                React.DOM.div({className:'result-box result-box--open'}, this.renderResultBox_(result)),
-                React.DOM.div({
-                    className:'restart-button',
-                    onClick: function(){
-                        ga('send', 'event', 'questions', 'restart');
-                        this.setState(this.getInitialState());
-                    }.bind(this)
-                }, 'RESTART')));
+                    React.DOM.div({className:'sentence-text'}, sentence),
+                    React.DOM.div({className:'sentence-text sentence-text--result'}, resultSentence),
+                    React.DOM.div({className:'result-box result-box--open'}, this.renderResultBox_(result)),
+                    React.DOM.div({
+                        className:'restart-button',
+                        onClick: function(){
+                            ga('send', 'event', 'restart', 'restart');
+                            this.setState(this.getInitialState());
+                        }.bind(this)
+                    }, 'RESTART'),
+                    this.renderAllCameras_()));
         }
         
     },
@@ -335,8 +371,15 @@ var App = React.createClass({
         ];
     },
 
+    renderAllCameras_: function(){
+        return Object.keys(this.RESULTS).map(function(cameraKey){
+            var camera = this.RESULTS[cameraKey];
+            return React.DOM.div({className:'result-box result-box--listitemview'}, this.renderResultBox_(camera));
+        }.bind(this));
+    },
+
     handleStartClick_: function(){
-        ga('send', 'event', 'questions', 'start');
+        ga('send', 'event', 'start', 'start');
         this.setState({currentState: this.STATES.STARTED})
     },
 
@@ -373,7 +416,7 @@ var App = React.createClass({
             }
         }.bind(this));
 
-        if (!result){
+        if (!result && window.location.filename !== 'file://'){
             randomIndex = Math.floor(Math.random() * Object.keys(this.RESULTS).length);
             result = this.RESULTS[Object.keys(this.RESULTS)[randomIndex]];
         }
