@@ -1,3 +1,29 @@
+// TODO(make more versatile).
+function smoothScrollTo(endScroll){
+    function easeInOut(progress){
+        return Math.sin(progress * Math.PI - Math.PI / 2) * 0.5 + 0.5;
+    }
+
+    var startScroll = window.scrollY;
+    var difference = endScroll - startScroll;
+    var timing = 500;
+
+    var startTimestamp;
+
+    function animate(timestamp){
+        if (!startTimestamp) startTimestamp = timestamp;
+        progress = (timestamp - startTimestamp) / timing;
+
+        if (progress < 1){
+            window.scrollTo(0, startScroll + easeInOut(progress) * difference);
+            window.requestAnimationFrame(animate);
+        } else {
+            window.scrollTo(0, startScroll + difference);
+        }
+    }
+    window.requestAnimationFrame(animate);
+}
+
 var App = React.createClass({
     STATES: {
         TITLE: 'title',
@@ -127,11 +153,13 @@ var App = React.createClass({
             imageBig: 'img/rx1rii.jpg',
             specs: [
                 React.DOM.h3(null, 'Sony RX1R II'),
-                React.DOM.h4(null, 'Perfect for: the rich minimalist or the pro who needs a backup'),
-                React.DOM.p(null, 'Better video quality than many cameras that cost a lot more.'),
+                React.DOM.h4(null, 'Perfect for: the rich minimalist or the pro who needs a backup camera'),
+                React.DOM.p(null, ''),
                 React.DOM.ul({className:'result-box__list result-box__list--pros'}, [
-                    React.DOM.li(null, '4K video'),
-                    React.DOM.li(null, 'Small size'),
+                    React.DOM.li(null, 'Tiny for a full-frame cameras'),
+                ]),
+                React.DOM.ul({className:'result-box__list result-box__list--cons'}, [
+                    React.DOM.li(null, 'Limited to a single focal length'),
                 ])
             ],
             price: '$3300'
@@ -146,8 +174,15 @@ var App = React.createClass({
             imageBig: 'img/iphone.jpg',
             specs: [
                 React.DOM.h3(null, 'Your Smartphone'),
-                React.DOM.ul(null, [
-                    React.DOM.li(null, 'Most modern smartphones have great cameras built in. They\'re also smaller, sleeker and more user-friendly than entry-level point-and-shoots. Best of all, you probably already have one in your pocket. We suggest saving your money or putting it towards a new phone, unless or until you decide you want to get serious about photography.'),
+                React.DOM.h4(null, 'Perfect for: the beginner who already has one'),
+                React.DOM.p(null, 'Most modern smartphones have great cameras built in. They\'re also smaller, sleeker and more user-friendly than entry-level point-and-shoots. Best of all, you probably already have one in your pocket. We suggest saving your money or putting it towards a new phone, unless or until you decide you want to get serious about photography.'),
+                React.DOM.ul({className:'result-box__list result-box__list--pros'}, [
+                    React.DOM.li(null, 'Small'),
+                    React.DOM.li(null, 'Easy to use'),
+                    React.DOM.li(null, 'You already have one'),
+                ]),
+                React.DOM.ul({className:'result-box__list result-box__list--cons'}, [
+                    React.DOM.li(null, 'Lacks manual controls and optical zoom'),
                 ])
             ],
             price: '$0+'
@@ -164,11 +199,13 @@ var App = React.createClass({
             specs: [
                 React.DOM.h3(null, 'Fuji Instax Mini 90'),
                 React.DOM.h4(null, 'Perfect for: The fun-lover or the person who has everything'),
-                React.DOM.p(null, 'Instant cameras are far from dead, and the Instax Mini 90 proves it.'),
-                React.DOM.ul(null, [
-                    React.DOM.li(null, '+ Fun factor; Enables a different, more spontaneous kind of photography'),
-                    React.DOM.li(null, '- Film can get pricey'),
-                    React.DOM.li(null, '- Resolution is poor compared to even the cheapest digital camera'),
+                React.DOM.p(null, ''),
+                React.DOM.ul({className:'result-box__list result-box__list--pros'}, [
+                    React.DOM.li(null, 'Fun; Enables a different, more spontaneous kind of photography'),
+                ]),
+                React.DOM.ul({className:'result-box__list result-box__list--cons'}, [
+                    React.DOM.li(null, 'Film can get pricey'),
+                    React.DOM.li(null, 'Resolution is poor compared to even the cheapest digital camera'),
                 ])
             ],
             price: '$140'
@@ -185,11 +222,13 @@ var App = React.createClass({
             specs: [
                 React.DOM.h3(null, 'GoPro HERO+'),
                 React.DOM.h4(null, 'Perfect for: the thrill-seeker on a budget'),
-                React.DOM.p(null, '.'),
-                React.DOM.ul(null, [
-                    React.DOM.li(null, '+ Wallet-friendly'),
-                    React.DOM.li(null, '- No LCD screen'),
-                    React.DOM.li(null, '- Fewer video modes than higher-end GoPros, making it wo'),
+                React.DOM.p(null, ''),
+                React.DOM.ul({className:'result-box__list result-box__list--pros'}, [
+                    React.DOM.li(null, 'Wallet-friendly'),
+                ]),
+                React.DOM.ul({className:'result-box__list result-box__list--cons'}, [
+                    React.DOM.li(null, 'No LCD screen'),
+                    React.DOM.li(null, 'Fewer video modes and worse video quality than higher-end GoPros'),
                 ])
             ],
             price: '$200'
@@ -206,11 +245,14 @@ var App = React.createClass({
             specs: [
                 React.DOM.h3(null, 'GoPro HERO4 Black'),
                 React.DOM.h4(null, 'Perfect for: the thrill-seeker'),
-                React.DOM.p(null, '.'),
-                React.DOM.ul(null, [
-                    React.DOM.li(null, '+ 4K video'),
-                    React.DOM.li(null, '+ slow mo'),
-                    React.DOM.li(null, '- No LCD screen'),
+                React.DOM.p(null, ''),
+                React.DOM.ul({className:'result-box__list result-box__list--pros'}, [
+                    React.DOM.li(null, '4K video'),
+                    React.DOM.li(null, 'Tons of video modes'),
+                    React.DOM.li(null, 'Slow motion'),
+                ]),
+                React.DOM.ul({className:'result-box__list result-box__list--cons'}, [
+                    React.DOM.li(null, 'No LCD screen'),
                 ])
             ],
             price: '$400-500'
@@ -227,13 +269,13 @@ var App = React.createClass({
             specs: [
                 React.DOM.h3(null, 'Olympus OM-D E-M10 II'),
                 React.DOM.h4(null, 'Perfect for: the budding photographer or the size-and-price-concious enthusiast'),
-                React.DOM.p(null, '.'),
-                React.DOM.ul(null, [
-                    React.DOM.li(null, '+ 5-Axis Image Stabilization'),
-                    React.DOM.li(null, '+ Interchangeable lenses'),
-                    React.DOM.li(null, '+ Electronic Viewfinder'),
-                    React.DOM.li(null, '+ WiFi'),
-                    React.DOM.li(null, '+ Fast autofocus')
+                React.DOM.p(null, ''),
+                React.DOM.ul({className:'result-box__list result-box__list--pros'}, [
+                    React.DOM.li(null, '5-Axis Image Stabilization'),
+                    React.DOM.li(null, 'Interchangeable lenses'),
+                    React.DOM.li(null, 'Electronic Viewfinder'),
+                    React.DOM.li(null, 'WiFi'),
+                    React.DOM.li(null, 'Fast autofocus')
                 ])
             ],
             price: '$550 (body-only)'
@@ -249,7 +291,7 @@ var App = React.createClass({
                 React.DOM.h3(null, 'Nikon D750'),
                 React.DOM.h4(null, 'Perfect for: the enthusiast or the pro'),
                 React.DOM.p(null, 'The first full-frame camera you should consider.'),
-                React.DOM.ul(null, [
+                React.DOM.ul({className:'result-box__list result-box__list--pros'}, [
                     React.DOM.li(null, '24MP Full-Frame Sensor'),
                     React.DOM.li(null, 'WiFi'),
                 ])
@@ -268,7 +310,7 @@ var App = React.createClass({
                 React.DOM.h3(null, 'Sony α7R II'),
                 React.DOM.h4(null, 'Perfect for: the specs-seeking pro with money to spend'),
                 React.DOM.p(null, 'The α7R II is Sony\'s flagship'),
-                React.DOM.ul(null, [
+                React.DOM.ul({className:'result-box__list result-box__list--pros'}, [
                     React.DOM.li(null, '42MP back-illuminated full-frame sensor'),
                     React.DOM.li(null, 'Great autofocus, built-in stabilization, 4K video'),
                 ])
@@ -285,11 +327,10 @@ var App = React.createClass({
             imageBig: 'img/d7200.jpg',
             specs: [
                 React.DOM.h3(null, 'Nikon D7200'),
-                React.DOM.h4(null, 'Perfect for: the enthusiast or the pro'),
-                React.DOM.p(null, 'The first full-frame camera you should consider.'),
-                React.DOM.ul(null, [
-                    React.DOM.li(null, '24MP Full-Frame Sensor'),
-                    React.DOM.li(null, 'WiFi'),
+                React.DOM.h4(null, 'Perfect for: the pro on a budget'),
+                React.DOM.p(null, ''),
+                React.DOM.ul({className:'result-box__list result-box__list--pros'}, [
+                    React.DOM.li(null, 'Refined and easy to use DSLR'),
                 ])
             ],
             price: '$1100 (body-only)'
@@ -306,16 +347,14 @@ var App = React.createClass({
                 React.DOM.h3(null, 'Panasonic LUMIX DMC-GH4'),
                 React.DOM.h4(null, 'Perfect for: the budding videographer'),
                 React.DOM.p(null, 'Better video quality than many cameras that cost a lot more.'),
-                React.DOM.ul(null, [
+                React.DOM.ul({className:'result-box__list result-box__list--pros'}, [
                     React.DOM.li(null, '4K video'),
-                    React.DOM.li(null, 'Small size'),
                 ])
             ],
             price: '$1300 (body-only)'
         },
-
         TG4: {
-            customArticle: 'an',
+            customArticle: 'an ',
             name: 'Olympus TG-4',
             mustORs: [
                 ['$200 to $600'],
@@ -326,10 +365,10 @@ var App = React.createClass({
             specs: [
                 React.DOM.h3(null, 'Olympus TG-4'),
                 React.DOM.h4(null, 'Perfect for: the adventurer or the clumsy one'),
-                React.DOM.p(null, 'Waterproof, blah'),
-                React.DOM.ul(null, [
-                    React.DOM.li(null, '4K video'),
-                    React.DOM.li(null, 'Small size'),
+                React.DOM.p(null, ''),
+                React.DOM.ul({className:'result-box__list result-box__list--pros'}, [
+                    React.DOM.li(null, 'Waterproof, shockproof, dustproof, etc'),
+                    React.DOM.li(null, 'Fast aperture for a small camera'),
                 ])
             ],
             price: '$350'
@@ -341,7 +380,8 @@ var App = React.createClass({
     getInitialState: function(){
         return {
             currentState: this.STATES.TITLE,
-            choices: []
+            choices: [], 
+            viewAll: false,
         };
     },
 
@@ -431,9 +471,19 @@ var App = React.createClass({
                             this.setState(this.getInitialState());
                         }.bind(this)
                     }, 'RESTART'),
-                    this.renderAllCameras_()));
+                    React.DOM.div({
+                        className:'view-all-suggestions-button',
+                        ref:'viewAllButton',
+                        onClick: function(evt){
+                            ga('send', 'event', 'view-all', 'view-all');
+                            this.setState({
+                                viewAll: true,
+                            });
+                            smoothScrollTo(this.refs.viewAllButton.offsetTop);
+                        }.bind(this)
+                    }, 'VIEW ALL SUGGESTIONS'),
+                    this.maybeRenderAllCameras_()));
         }
-        
     },
 
     renderResultBox_: function(result){
@@ -446,7 +496,9 @@ var App = React.createClass({
         ];
     },
 
-    renderAllCameras_: function(){
+    maybeRenderAllCameras_: function(){
+        if (!this.state.viewAll) return null;
+
         return Object.keys(this.RESULTS).map(function(cameraKey){
             var camera = this.RESULTS[cameraKey];
             return React.DOM.div({className:'result-box result-box--listitemview'}, this.renderResultBox_(camera));

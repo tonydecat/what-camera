@@ -123,7 +123,7 @@ h1 {
 }
 
 .result-box--open {
-    height: 330px;
+    height: 300px;
     padding: 20px 0;
 }
 
@@ -180,7 +180,7 @@ h1 {
 
 @media only screen and (max-width: 1001px) {
     .result-box--open {
-        height: 630px;
+        height: 600px;
     }
 
     .result-box__section {
@@ -279,6 +279,7 @@ p {
 }
 
 .restart-button {
+    vertical-align: top;
     margin: 40px auto 0;
     font-size: 1.8em;
     letter-spacing: -1px;
@@ -313,6 +314,37 @@ p {
 .restart-button:hover::before {
   transform: rotate(-360deg);
   transition: transform .6s ease-in-out;
+}
+
+.view-all-suggestions-button {
+    vertical-align: top;
+    margin: 40px auto 0;
+    height: 60px;
+    font-size: 1.8em;
+    letter-spacing: -1px;
+    font-weight: 900;
+    cursor: pointer;
+    display: inline-block;
+    padding: 20px 40px;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    position: relative;
+
+    color: white;
+    text-shadow: 1px 1px 7px black;
+}
+
+.view-all-suggestions-button::after {
+    display: block;
+    margin-top: -15px;
+    font-size: 1.5em;
+    content: '▾';
+    transition: margin-top 0.2s;
+}
+
+.view-all-suggestions-button:hover::after {
+    margin-top: -8px;
 }
 
 .title-page__begin {
