@@ -123,14 +123,8 @@ h1 {
 }
 
 .result-box--open {
-    height: 300px;
+    height: 330px;
     padding: 20px 0;
-}
-
-@media only screen and (max-width: 1001px) {
-    .result-box--open {
-        height: 600px;
-    }
 }
 
 .result-box--listitemview {
@@ -169,31 +163,119 @@ h1 {
     width: 470px;
     padding-left: 30px;
     text-align: left;
-    font-size: 1.2em;
-    line-height: 1.4em;
+    font-size: 1.1em;
+    line-height: 1.15em;
+    overflow: visible;
 
     position: absolute;
     top: 50%;
     left: 0;
     right: 0;
     max-height: 300px;
-    overflow: auto;
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
     -o-transform: translateY(-50%);
     transform: translateY(-50%);
 }
 
+@media only screen and (max-width: 1001px) {
+    .result-box--open {
+        height: 630px;
+    }
+
+    .result-box__section {
+        border-left: none;
+        border-top: 1px solid lightgray;
+    }
+
+    .result-box__section:first-child {
+        border-top: none;
+    }
+
+    .result-box__specs {
+        padding-left: 0;
+        top: 30px;
+        -webkit-transform: none;
+        -ms-transform: none;
+        -o-transform: none;
+        transform: none;
+    }
+
+    .result-box__image {
+        right: 0;
+        left: 0;
+        top: 0;
+        bottom: 20px;
+        max-height: 280px;
+    }
+}
+
 h3 {
-    font-size: 1.5em;
+    font-size: 1.6em;
     font-weight: 900;
+    margin-bottom: 3px;
 }
 
 h4 {
     font-weight: 700;
     text-transform: uppercase;
-    font-size: 0.9em;
+    font-size: 1em;
     margin-bottom: 10px;
+}
+
+p {
+    margin-bottom: 12px;
+}
+
+.result-box__list li {
+    font-weight: 700;
+    font-size: 0.9em;
+    display: inline-block;
+    margin-right: 12px;
+}
+
+.result-box__list--pros li {
+    color: darkgreen;
+}
+
+.result-box__list--cons li {
+    color: darkred;
+}
+
+.result-box__list li::before {
+    display: inline-block;
+    font-size: 1.1em;
+    width: 17px;
+    height: 17px;
+    line-height: 1em;
+    font-weight: 900;
+    border-radius: 9px;
+    line-height: 17px;
+    color: white;
+    text-align: center;
+    margin-right: 3px;
+}
+
+.result-box__list--pros li::before {
+    content: '+';
+    background-color: darkgreen;
+}
+
+.result-box__list--cons li::before {
+    content: '-';
+    background-color: darkred;
+    line-height: 15px;
+}
+
+.result-box__price {
+    font-size: 1.2em;
+    font-weight: 700;
+    margin-top: 14px;
+    background-color: #FF9900;
+    border-radius: 5px;
+    color: white;
+    padding: 5px 12px;
+    display: inline-block;
 }
 
 .restart-button {
