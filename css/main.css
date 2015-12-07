@@ -60,6 +60,11 @@ body {
     height: 100vh;
 }
 
+.title-page__all-cameras {
+    margin-top: 100vh;
+    display: none;
+}
+
 h1 {
     font-size: 4.2em;
     font-weight: 900;

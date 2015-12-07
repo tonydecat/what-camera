@@ -437,7 +437,7 @@ var App = React.createClass({
         return {
             currentState: this.STATES.TITLE,
             choices: [], 
-            viewAll: false,
+            viewAll: true,
         };
     },
 
@@ -445,6 +445,10 @@ var App = React.createClass({
         if (window.location.protocol === 'file:'){
             this.printMissingResults_();
         }
+        
+        window.setTimeout(function(){
+            this.setState({viewAll: true});
+        }.bind(this), 50);
     },
 
     render: function(){
@@ -463,7 +467,8 @@ var App = React.createClass({
                     className:'title-page__begin',
                     onClick:this.handleStartClick_
                 }, 'BEGIN')),
-            React.DOM.div({className:'title-page__footnote'}, '*Holiday 2015 edition'));
+            React.DOM.div({className:'title-page__footnote'}, '*Holiday 2015 edition'),
+            React.DOM.div({className:'title-page__all-cameras'}, this.maybeRenderAllCameras_()));
     },
 
     buildSentence_: function(startNode, choices){
@@ -579,7 +584,10 @@ var App = React.createClass({
 
     handleStartClick_: function(){
         ga('send', 'event', 'start', 'start');
-        this.setState({currentState: this.STATES.STARTED})
+        this.setState({
+            currentState: this.STATES.STARTED,
+            viewAll: false
+        });
     },
 
     howManyIncluded_: function(choices, items){
