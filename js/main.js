@@ -142,7 +142,9 @@ var App = React.createClass({
                     React.DOM.li(null, 'Limited to a single focal length'),
                 ])
             ],
-            price: '$1100'
+            price: '$1100',
+            amazonHref: 'http://www.amazon.com/gp/product/B00NF6ZGY6/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B00NF6ZGY6&linkCode=as2&tag=whatcameshoui-20&linkId=GDVQ4QRBPZWXBYT5',
+            amazonPixel: 'http://ir-na.amazon-adsystem.com/e/ir?t=whatcameshoui-20&l=as2&o=1&a=B00NF6ZGY6'
         },
         RX1R: {
             name: 'Sony RX1R II',
@@ -214,9 +216,11 @@ var App = React.createClass({
                     React.DOM.li(null, 'Resolution is poor compared to a digital camera'),
                 ])
             ],
-            price: '$140'
+            price: '$140',
+            amazonHref: 'http://www.amazon.com/gp/product/B00FR85IRK/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B00FR85IRK&linkCode=as2&tag=whatcameshoui-20&linkId=FFRVIZJEKDUKLSRO',
+            amazonPixel: 'http://ir-na.amazon-adsystem.com/e/ir?t=whatcameshoui-20&l=as2&o=1&a=B00FR85IRK'
         },
-        GOPRO_HERO_PLUS: {
+        GOPRO_HERO4_SESSION: {
             name: 'GoPro Hero4 Session',
             mustORs: [
                 ['less than $200'],
@@ -241,7 +245,9 @@ var App = React.createClass({
                     React.DOM.li(null, 'No LCD screen'),
                 ])
             ],
-            price: '$200'
+            price: '$200',
+            amazonHref: 'http://www.amazon.com/gp/product/B010H05JMQ/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B010H05JMQ&linkCode=as2&tag=whatcameshoui-20&linkId=OO4FCBVTKEDVGPL4',
+            amazonPixel: 'http://ir-na.amazon-adsystem.com/e/ir?t=whatcameshoui-20&l=as2&o=1&a=B010H05JMQ'
         },
         GOPRO_HERO4_BLACK: {
             name: 'GoPro HERO4 Black',
@@ -265,7 +271,9 @@ var App = React.createClass({
                     React.DOM.li(null, 'No LCD screen'),
                 ])
             ],
-            price: '$400-500'
+            price: '$500',
+            amazonHref: 'http://www.amazon.com/gp/product/B00NIYNUF2/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B00NIYNUF2&linkCode=as2&tag=whatcameshoui-20&linkId=ZAKPKKL4HOMZEBFX',
+            amazonPixel: 'http://ir-na.amazon-adsystem.com/e/ir?t=whatcameshoui-20&l=as2&o=1&a=B00NIYNUF2'
         },
         EM10II: {
             customArticle: 'an ',
@@ -287,7 +295,9 @@ var App = React.createClass({
                     React.DOM.li(null, 'Fast autofocus')
                 ])
             ],
-            price: '$550 (body-only)'
+            price: '$550 (body-only)',
+            amazonHref: 'http://www.amazon.com/gp/product/B016LM4EE8/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B016LM4EE8&linkCode=as2&tag=whatcameshoui-20&linkId=7QTNNWWJSQKGAG3J',
+            amazonPixel: 'http://ir-na.amazon-adsystem.com/e/ir?t=whatcameshoui-20&l=as2&o=1&a=B016LM4EE8'
         },
         D750: {
             name: 'Nikon D750',
@@ -307,7 +317,9 @@ var App = React.createClass({
                     React.DOM.li(null, 'WiFi'),
                 ])
             ],
-            price: '$1900 (body-only)'
+            price: '$1900 (body-only)',
+            amazonHref: 'http://www.amazon.com/gp/product/B0060MVJ1Q/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B0060MVJ1Q&linkCode=as2&tag=whatcameshoui-20&linkId=6DUL2D2XZC6W5GTP',
+            amazonPixel: 'http://ir-na.amazon-adsystem.com/e/ir?t=whatcameshoui-20&l=as2&o=1&a=B0060MVJ1Q'
         },
         A7RII: {
             name: 'Sony α7R II',
@@ -333,7 +345,9 @@ var App = React.createClass({
                     React.DOM.li(null, 'More limited lens selection than Nikon or Canon'),
                 ])
             ],
-            price: '$3200 (body-only)'
+            price: '$3200 (body-only)',
+            amazonHref: 'http://www.amazon.com/gp/product/B00ZDWGFR2/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B00ZDWGFR2&linkCode=as2&tag=whatcameshoui-20&linkId=C5BFAQP3YSWZGSCA',
+            amazonPixel: 'http://ir-na.amazon-adsystem.com/e/ir?t=whatcameshoui-20&l=as2&o=1&a=B00ZDWGFR2'
         },
         D7200: {
             name: 'Nikon D7200',
@@ -358,7 +372,9 @@ var App = React.createClass({
                     React.DOM.li(null, 'Much bigger and heavier than it\'s mirrorless rivals'),
                 ])
             ],
-            price: '$1100 (body-only)'
+            price: '$1100 (body-only)',
+            amazonHref: 'http://www.amazon.com/gp/product/B00U2W45WA/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B00U2W45WA&linkCode=as2&tag=whatcameshoui-20&linkId=6JLJBAGLZKAPWCH7',
+            amazonPixel: 'http://ir-na.amazon-adsystem.com/e/ir?t=whatcameshoui-20&l=as2&o=1&a=B00U2W45WA'
         },
         GH4: {
             name: 'Panasonic LUMIX DMC-GH4',
@@ -380,7 +396,9 @@ var App = React.createClass({
                     React.DOM.li(null, 'Other options are better for stills at this price range'),
                 ])
             ],
-            price: '$1300 (body-only)'
+            price: '$1300 (body-only)',
+            amazonHref: 'http://www.amazon.com/gp/product/B00I9GYG8O/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B00I9GYG8O&linkCode=as2&tag=whatcameshoui-20&linkId=UNIC3SXVYVUCODGB',
+            amazonPixel: 'http://ir-na.amazon-adsystem.com/e/ir?t=whatcameshoui-20&l=as2&o=1&a=B00I9GYG8O'
         },
         TG4: {
             customArticle: 'an ',
@@ -404,7 +422,9 @@ var App = React.createClass({
                     React.DOM.li(null, 'Image quality still not as good as non-waterproof rivals'),
                 ])
             ],
-            price: '$300'
+            price: '$300',
+            amazonHref: 'http://www.amazon.com/gp/product/B00UKV5D4C/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B00UKV5D4C&linkCode=as2&tag=whatcameshoui-20&linkId=SEC42E356L24CXO5',
+            amazonPixel: 'http://ir-na.amazon-adsystem.com/e/ir?t=whatcameshoui-20&l=as2&o=1&a=B00UKV5D4C'
         },
         G9X: {
             name: 'Canon PowerShot G9 X',
@@ -412,7 +432,7 @@ var App = React.createClass({
                 ['$200 to $500'],
                 ['mostly photos', 'a mix of photos and videos', 'pictures? I don\'t know']
             ],
-            helpfuls: ['mostly photos', 'a mix of photos and videos', 'travel', 'family and friends', 'landscapes', 'small size', 'a gift giver'],
+            helpfuls: ['mostly photos', 'a mix of photos and videos', 'travel', 'family and friends', 'landscapes', 'small size', 'a gift giver', 'versatility', 'simplicity'],
             imageBig: 'img/g9x.jpg',
             specs: [
                 React.DOM.h3(null, 'Canon PowerShot G9 X'),
@@ -427,7 +447,9 @@ var App = React.createClass({
                     React.DOM.li(null, 'Poor battery life'),
                 ])
             ],
-            price: '$450'
+            price: '$450',
+            amazonHref: 'http://www.amazon.com/gp/product/B0167Q140U/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B0167Q140U&linkCode=as2&tag=whatcameshoui-20&linkId=U7VSFIYQR3YMWSBV',
+            amazonPixel: 'http://ir-na.amazon-adsystem.com/e/ir?t=whatcameshoui-20&l=as2&o=1&a=B0167Q140U'
         },
     },
 
@@ -564,12 +586,33 @@ var App = React.createClass({
     },
 
     renderResultBox_: function(result){
+        var buyLink = React.DOM.div({className: 'result-box__price'}, result.price);
+
+        if (result.amazonHref){
+            buyLink = React.DOM.div({},
+                React.DOM.a({
+                    className: 'result-box__price result-box__price--amazon',
+                    rel: 'nofollow',
+                    href: result.amazonHref
+                }, result.price + ' - Buy it on Amazon'),
+                React.DOM.img({
+                    src: result.amazonPixel,
+                    width: '1',
+                    height: '1',
+                    border: '0',
+                    alt: '',
+                    style: {
+                        border: 'none !important',
+                        margin: '0px !important'
+                    }
+                }, null));
+        }
+
         return [
             React.DOM.div({className: 'result-box__section'},
                 React.DOM.img({className: 'result-box__image', src:result.imageBig},null)),
             React.DOM.div({className: 'result-box__section'},
-                React.DOM.div({className: 'result-box__specs'}, result.specs,
-                    React.DOM.div({className: 'result-box__price'}, result.price /*+ ' - Buy it on Amazon'*/)))
+                React.DOM.div({className: 'result-box__specs'}, result.specs, buyLink))
         ];
     },
 
