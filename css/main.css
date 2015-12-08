@@ -283,6 +283,21 @@ p {
     display: inline-block;
 }
 
+.result-box__price--amazon {
+    text-decoration: none;
+    color: white;
+}
+
+.result-box__price--amazon:hover {
+    text-decoration: none;
+    background-color: #EE8800;
+}
+
+.result-box__price--amazon:active {
+    text-decoration: none;
+    background-color: #DD7700;
+}
+
 .restart-button {
     vertical-align: top;
     margin: 40px auto 0;
